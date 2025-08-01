@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Feedback Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      background: #fff;
+      padding: 25px;
+      margin: 20px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+      font-size: 1.5rem;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    textarea {
+      resize: vertical;
+    }
+    .radio-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 5px;
+    }
+    .radio-group label {
+      font-weight: normal;
+    }
+    button {
+      margin-top: 20px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      background: #45a049;
+    }
+
+    .star-rating {
+      direction: rtl;
+      font-size: 24px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 5px;
+      flex-wrap: wrap;
+    }
+
+    .star-rating input[type="radio"] {
+      display: none;
+    }
+
+    .star-rating label {
+      color: #ccc;
+      cursor: pointer;
+    }
+
+    .star-rating input[type="radio"]:checked ~ label {
+      color: gold;
+    }
+
+    .project-rating {
+      margin-top: 10px;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+        margin: 10px;
+      }
+
+      .radio-group {
+        justify-content: space-between;
+      }
+
+      .star-rating {
+        font-size: 20px;
+        gap: 3px;
+      }
+
+      button {
+        font-size: 1rem;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Event Feedback Form</h2>
+    <form id="feedbackForm" action="submit_feedback.php" method="POST">
+      
+      <input type="hidden" name="event_id" value="IT_PROJECT_SHOWCASE_2025">
+
+      <label for="name">Name (optional)</label>
+      <input type="text" id="name" name="name">
+
+      <label for="email">Email (optional)</label>
+      <input type="email" id="email" name="email">
+
+      <label for="user_type">You are a:</label>
+      <select id="user_type" name="user_type" required>
+        <option value="">Select...</option>
+        <option value="Student">Student</option>
+        <option value="Faculty">Faculty</option>
+        <option value="Guest">Guest</option>
+      </select>
+
+      <label>Overall Event Rating:</label>
+      <div class="radio-group">
+        <label><input type="radio" name="rating_overall" value="1" required> 1</label>
+        <label><input type="radio" name="rating_overall" value="2"> 2</label>
+        <label><input type="radio" name="rating_overall" value="3"> 3</label>
+        <label><input type="radio" name="rating_overall" value="4"> 4</label>
+        <label><input type="radio" name="rating_overall" value="5"> 5</label>
+      </div>
+
+      <label>Project Ratings:</label>
+
+      <div class="project-rating">
+        <label>1. Smart Attendance System</label>
+        <div class="star-rating">
+          <input type="radio" id="p1-star5" name="rating_project1" value="5"><label for="p1-star5">&#9733;</label>
+          <input type="radio" id="p1-star4" name="rating_project1" value="4"><label for="p1-star4">&#9733;</label>
+          <input type="radio" id="p1-star3" name="rating_project1" value="3"><label for="p1-star3">&#9733;</label>
+          <input type="radio" id="p1-star2" name="rating_project1" value="2"><label for="p1-star2">&#9733;</label>
+          <input type="radio" id="p1-star1" name="rating_project1" value="1"><label for="p1-star1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="project-rating">
+        <label>2. AI Chatbot for Campus Queries</label>
+        <div class="star-rating">
+          <input type="radio" id="p2-star5" name="rating_project2" value="5"><label for="p2-star5">&#9733;</label>
+          <input type="radio" id="p2-star4" name="rating_project2" value="4"><label for="p2-star4">&#9733;</label>
+          <input type="radio" id="p2-star3" name="rating_project2" value="3"><label for="p2-star3">&#9733;</label>
+          <input type="radio" id="p2-star2" name="rating_project2" value="2"><label for="p2-star2">&#9733;</label>
+          <input type="radio" id="p2-star1" name="rating_project2" value="1"><label for="p2-star1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="project-rating">
+        <label>3. College Event Organizer App</label>
+        <div class="star-rating">
+          <input type="radio" id="p3-star5" name="rating_project3" value="5"><label for="p3-star5">&#9733;</label>
+          <input type="radio" id="p3-star4" name="rating_project3" value="4"><label for="p3-star4">&#9733;</label>
+          <input type="radio" id="p3-star3" name="rating_project3" value="3"><label for="p3-star3">&#9733;</label>
+          <input type="radio" id="p3-star2" name="rating_project3" value="2"><label for="p3-star2">&#9733;</label>
+          <input type="radio" id="p3-star1" name="rating_project3" value="1"><label for="p3-star1">&#9733;</label>
+        </div>
+      </div>
+
+      <div class="project-rating">
+        <label>4. IoT-Based Smart Water System</label>
+        <div class="star-rating">
+          <input type="radio" id="p4-star5" name="rating_project4" value="5"><label for="p4-star5">&#9733;</label>
+          <input type="radio" id="p4-star4" name="rating_project4" value="4"><label for="p4-star4">&#9733;</label>
+          <input type="radio" id="p4-star3" name="rating_project4" value="3"><label for="p4-star3">&#9733;</label>
+          <input type="radio" id="p4-star2" name="rating_project4" value="2"><label for="p4-star2">&#9733;</label>
+          <input type="radio" id="p4-star1" name="rating_project4" value="1"><label for="p4-star1">&#9733;</label>
+        </div>
+      </div>
+
+      <label for="liked_most">What did you like most about the event?</label>
+      <textarea id="liked_most" name="liked_most" rows="3" required></textarea>
+
+      <label for="improvement_suggestions">What could be improved?</label>
+      <textarea id="improvement_suggestions" name="improvement_suggestions" rows="3"></textarea>
+
+      <label>Would you attend such events again?</label>
+      <select name="attend_again" required>
+        <option value="">Select...</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+        <option value="Maybe">Maybe</option>
+      </select>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+</body>
+</html>
